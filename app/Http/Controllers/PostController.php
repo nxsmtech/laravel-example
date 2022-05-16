@@ -22,6 +22,7 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+        dd(1);
         $requestData = $request->all();
 
         $post = new Post([
