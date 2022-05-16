@@ -29,6 +29,7 @@ class PostController extends Controller
             'title' => $validatedData['title'],
             'body' => $validatedData['body'],
         ]);
+
         $post->save();
         
         return redirect()->route('posts.show', ['post' => $post]);

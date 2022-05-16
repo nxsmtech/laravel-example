@@ -3,6 +3,7 @@
 <a href="{{ route('posts.create') }}">
     Create
 </a>
+
 <table>
     <thead>
         <th>ID</th>

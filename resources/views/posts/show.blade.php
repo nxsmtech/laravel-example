@@ -30,7 +30,3 @@
     <input type="hidden" value={{ get_class($post) }} name="commentable_type">
     <input type="submit">
 </form>
-
-<a href="{{ route('posts.index') }}">
-    Back to index
-</a>
