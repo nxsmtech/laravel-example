@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -20,14 +21,13 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function store(Request $request)
+    public function store(StorePostRequest $storePostRequest)
     {
-        $variable = 'Nikita';
-        $requestData = $request->all();
+        $validatedData = $storePostRequest->validated();
 
         $post = new Post([
-            'title' => $requestData['title'],
-            'body' => $requestData['body'],
+            'title' => $validatedData['title'],
+            'body' => $validatedData['body'],
         ]);
         $post->save();
         
@@ -50,10 +50,13 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post)
     {
-        $requestData = $request->all();
+        $validated = $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+        ]);
 
-        $post->title = $requestData['title'];
-        $post->body = $requestData['body'];
+        $post->title = $validated['title'];
+        $post->body = $validated['body'];
         $post->save();
         
         return redirect()->route('posts.show', ['post' => $post]);

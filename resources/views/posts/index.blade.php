@@ -1,3 +1,8 @@
+@extends('layout.main')
+
+<a href="{{ route('posts.create') }}">
+    Create
+</a>
 <table>
     <thead>
         <th>ID</th>
@@ -14,9 +19,6 @@
                 <td>{{ $post->body }}</td>
                 <td>{{ $post->author_name }}</td>
                 <td>
-                    <a href="{{ route('posts.create') }}">
-                        Create
-                    </a>
                     <a href="{{ route('posts.show', ['post' => $post->id]) }}">
                         Show
                     </a>
