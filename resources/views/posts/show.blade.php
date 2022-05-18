@@ -8,6 +8,8 @@
     </div>
 @endforeach
 
+<p> Comment count: {{ $post->comments()->count() }}
+
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

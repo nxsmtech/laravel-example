@@ -1,5 +1,3 @@
-@extends('layout.main')
-
 <a href="{{ route('posts.create') }}">
     Create
 </a>
