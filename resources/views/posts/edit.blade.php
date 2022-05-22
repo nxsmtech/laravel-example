@@ -11,7 +11,7 @@
 </div>
 @endif
 
-<form action="/posts/edit" method="post">
+<form action="/posts/edit/{{$post->id}}" method="post">
     @csrf
     
     Title : <input type="text" name="title" value="{{ $post->title }}"><br>
