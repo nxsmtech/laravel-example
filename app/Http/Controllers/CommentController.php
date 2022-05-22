@@ -7,12 +7,6 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function index()
-    {
-        $comment = Comment::find(1);
-        dd($comment->post);
-    }
-
     public function store(Request $request)
     {
         $validatedData = $request->validate([

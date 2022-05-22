@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,8 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [IndexController::class, 'index']);
-Route::get('/show/{post}', [IndexController::class, 'show']);
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function() {
+    return view('dashboard');
+})->middleware(['auth'])
+    ->name('dashboard');
+
+require __DIR__.'/auth.php';
+
+Route::controller(CommentController::class)->group(function () {
+    Route::prefix('comments')->group(function () {
+        Route::get('/', 'index');
+        Route::post('/store', 'store')->name('comments.store');
+    });
+});
 
 Route::controller(PostController::class)->group(function () {
     Route::prefix('posts')->group(function () {
@@ -31,9 +44,3 @@ Route::controller(PostController::class)->group(function () {
     });
 });
 
-Route::controller(CommentController::class)->group(function () {
-    Route::prefix('comments')->group(function () {
-        Route::get('/', 'index');
-        Route::post('/store', 'store')->name('comments.store');
-    });
-});

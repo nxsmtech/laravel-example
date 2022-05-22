@@ -1,4 +1,4 @@
-@extends('layout.index')
+@extends('dashboard')
 
 @section('content')
 
@@ -15,8 +15,9 @@
 <form action="/posts/create" method="post">
     @csrf
     
-    {{ __('attributes.title') }}: <input type="text" name="title" value="{{ old('title') }}"><br>
-    {{ __('attributes.body') }}: <input type="text" name="body" value="{{ old('body') }}"><br>
+    Title : <input type="text" name="title" value="{{ old('title') }}"><br>
+    Body : <input type="text" name="body" value="{{ old('body') }}"><br>
+    Author : <input type="text" name="author_name" value="{{ old('author_name') }}"><br>
     <input type="submit">
 </form>
 
