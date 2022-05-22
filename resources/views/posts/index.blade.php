@@ -1,8 +1,11 @@
-@extends('layout.main')
+@extends('dashboard')
 
-<a href="{{ route('posts.create') }}">
+@section('content')
+<div class="mx-12">
+    <a href="{{ route('posts.create') }}">
     Create
-</a>
+    </a>
+</div>
 
 <table>
     <thead>
@@ -21,16 +24,18 @@
                 <td>{{ $post->author_name }}</td>
                 <td>
                     <a href="{{ route('posts.show', ['post' => $post->id]) }}">
-                        Show
+                    Show
                     </a>
                     <a href="{{ route('posts.edit', ['post' => $post->id]) }}">
-                        Edit
+                    Edit
                     </a>
                     <a href="{{ route('posts.delete', ['post' => $post->id]) }}">
-                        Delete
+                    Delete
                     </a>
                 </td>
             </tr>
         @endforeach
     <tbody>
 </table>
+
+@endsection
